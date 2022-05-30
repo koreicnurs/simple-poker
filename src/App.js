@@ -1,25 +1,43 @@
-import logo from './logo.svg';
+import {Component} from "react";
 import './App.css';
+import Card from "./Cards/Card";
+import CardDeck from "./CardDeck";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+    state = {
+        getRandomArray: [],
+    }
+
+    getRandom = () => {
+        const deck = new CardDeck();
+        const cardArray = deck.getCards(5);
+
+        this.setState({
+            getRandomArray: cardArray,
+        })
+    }
+
+
+    render() {
+
+        return (
+            <>
+                <div className="playingCards fourColours faceImages">
+                    {
+                        this.state.getRandomArray.map((i, index) => {
+                            return (
+                                <Card key={index} rank={i.rank} suit={i.suit} />
+                            );
+                        })
+                    }
+                </div>
+                <p className='combo'>{this.state.getCardsCombo}</p>
+                <div>
+                    <button type="button" className="btn" onClick={this.getRandom}>New Deck</button>
+                </div>
+            </>
+        );
+  }
 }
 
 export default App;
