@@ -25,7 +25,7 @@ class CardDeck {
             this.getRandomCards.push(this.getCard());
             i++;
         }
-        return this.getRandomCards
+        return this.getRandomCards;
     }
 }
 

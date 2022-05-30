@@ -1,12 +1,10 @@
 import React from 'react';
 import './Cards.css';
-import CardDeck from "../CardDeck";
 
 class Card extends React.Component {
     render() {
         const simbols = [`♦`, '♥', '♠', '♣'];
         let s;
-        const deck = new CardDeck();
 
         switch (this.props.suit) {
             case `diams`:
@@ -22,7 +20,7 @@ class Card extends React.Component {
                 s = simbols[3];
                 break;
             default:
-                this.props.suit = ''
+                this.props.suit = '';
         }
 
         return (

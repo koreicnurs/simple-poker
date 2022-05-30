@@ -20,10 +20,10 @@ class PokerHand {
             three: 0,
         }
 
-        this.ranksCombo.map((value) => {
+        const objCards = this.ranksCombo.map((value) => {
             return {count: 1, name: value};
-        })
-        .reduce((a, b) => {
+        });
+        objCards.reduce((a, b) => {
             a[b.name] = (a[b.name] || 0) + b.count;
             if (a[b.name] === 3) {
                 c.three++;
