@@ -2,18 +2,23 @@ import {Component} from "react";
 import './App.css';
 import Card from "./Cards/Card";
 import CardDeck from "./CardDeck";
+import PokerHand from "./PokerHand";
 
 class App extends Component {
     state = {
         getRandomArray: [],
+        getCardsCombo: '',
     }
 
     getRandom = () => {
         const deck = new CardDeck();
         const cardArray = deck.getCards(5);
+        const combo = new PokerHand(cardArray);
+        const comboStr = combo.getOutcome();
 
         this.setState({
             getRandomArray: cardArray,
+            getCardsCombo: comboStr,
         })
     }
 
